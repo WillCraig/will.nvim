@@ -953,10 +953,10 @@ P.S. You can delete this when you're done too. It's your config now! :)
             local animate = require 'mini.animate'
             return {
               resize = {
-                timing = animate.gen_timing.linear { duration = 50, unit = 'total' },
+                timing = animate.gen_timing.linear { duration = 20, unit = 'total' },
               },
               scroll = {
-                timing = animate.gen_timing.linear { duration = 100, unit = 'total' },
+                timing = animate.gen_timing.linear { duration = 70, unit = 'total' },
                 subscroll = animate.gen_subscroll.equal {
                   predicate = function(total_scroll)
                     if mouse_scrolled then
@@ -1426,4 +1426,29 @@ P.S. You can delete this when you're done too. It's your config now! :)
 
   -- Create a command to call the function
   vim.api.nvim_create_user_command('JustifyRight', justify_right, {})
+
+  -- TODO: wcraig - update to include all the required properties.
+  require('notify').setup {
+  stages = 'fade_in_slide_out',
+  timeout = 3000,
+  background_colour = '#000000',
+  fps = 30,
+  render = 'default',
+  top_down = false, -- This positions the window at the bottom
+  level = 'info', -- Default notification level
+  max_width = 60, -- Maximum width of the notification window
+  -- max_height = nil, -- Maximum height of the notification window
+  icons = {}, -- Icons for different notification levels
+  time_formats = {}, -- Time formats for the notifications
+  -- on_close = nil, -- Function to call when the notification is closed
+  minimum_width = 20, -- Minimum width of the notification window
+  on_open = function(win)
+    vim.api.nvim_win_set_config(win, {
+      relative = 'editor',
+      anchor = 'SE', -- 'SE' positions the window in the bottom right corner
+      row = vim.o.lines - 2, -- Adjust row to be near the bottom
+      col = vim.o.columns - 2, -- Adjust col to be near the right
+    })
+  end,
+}
 end
