@@ -1239,13 +1239,13 @@ P.S. You can delete this when you're done too. It's your config now! :)
   --   },
   -- }
   -- require('lspconfig').myserver.setup { handlers = handlers }
-  local null_ls = require 'null-ls'
-  null_ls.setup {
-    sources = {
-      null_ls.builtins.formatting.stylua,
-      null_ls.builtins.completion.spell,
-    },
-  }
+  -- local null_ls = require 'null-ls'
+  -- null_ls.setup {
+  --   sources = {
+  --     null_ls.builtins.formatting.stylua,
+  --     null_ls.builtins.completion.spell,
+  --   },
+  -- }
   vim.opt.termguicolors = true
   require('bufferline').setup {}
 
