@@ -156,6 +156,9 @@ P.S. You can delete this when you're done too. It's your config now! :)
   -- Show which line your cursor is on
   vim.opt.cursorline = true
 
+  -- set linebreak
+  vim.opt.linebreak = true
+
   -- Minimal number of screen lines to keep above and below the cursor.
   vim.opt.scrolloff = 999
 
