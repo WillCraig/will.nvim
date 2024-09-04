@@ -956,10 +956,10 @@ P.S. You can delete this when you're done too. It's your config now! :)
             local animate = require 'mini.animate'
             return {
               resize = {
-                timing = animate.gen_timing.linear { duration = 20, unit = 'total' },
+                timing = animate.gen_timing.linear { duration = 40, unit = 'total' },
               },
               scroll = {
-                timing = animate.gen_timing.linear { duration = 70, unit = 'total' },
+                timing = animate.gen_timing.linear { duration = 50, unit = 'total' },
                 subscroll = animate.gen_subscroll.equal {
                   predicate = function(total_scroll)
                     if mouse_scrolled then
@@ -1454,4 +1454,11 @@ P.S. You can delete this when you're done too. It's your config now! :)
     })
   end,
 }
+vim.cmd([[
+imap <expr> <Tab> snippy#can_expand_or_advance() ? '<Plug>(snippy-expand-or-advance)' : '<Tab>'
+imap <expr> <S-Tab> snippy#can_jump(-1) ? '<Plug>(snippy-previous)' : '<S-Tab>'
+smap <expr> <Tab> snippy#can_jump(1) ? '<Plug>(snippy-next)' : '<Tab>'
+smap <expr> <S-Tab> snippy#can_jump(-1) ? '<Plug>(snippy-previous)' : '<S-Tab>'
+xmap <Tab> <Plug>(snippy-cut-text)
+]])
 end
